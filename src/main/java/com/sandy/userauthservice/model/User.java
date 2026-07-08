@@ -1,5 +1,6 @@
 package com.sandy.userauthservice.model;
 
+import com.sandy.userauthservice.dtos.UserDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToMany;
 
@@ -38,6 +39,15 @@ public class User extends BaseModel {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public UserDTO  toUserDTO() {
+        UserDTO userDTO = new UserDTO();
+        userDTO.setName(this.getUserName());
+        userDTO.setEmail(this.getEmail());
+        userDTO.setId(this.getId());
+        userDTO.setRoles(this.getRoles());
+        return userDTO;
     }
 
     private String userName;
